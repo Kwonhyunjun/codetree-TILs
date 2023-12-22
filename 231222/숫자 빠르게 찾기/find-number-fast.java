@@ -25,7 +25,7 @@ public class Main {
             int idx = -1;
 
             int left = 0;   // 시작
-            int right = N;  // 끝
+            int right = N-1;  // 끝
 
             while(left <= right){ // 등호를 꼭 넣어야 단 하나의 숫자만 남았을 경우에도 올바르게 찾아짐
                 int mid = left + (right - left) / 2; // Overflow 방지
