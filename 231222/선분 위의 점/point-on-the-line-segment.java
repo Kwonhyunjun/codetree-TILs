@@ -19,6 +19,8 @@ public class Main {
             hole[i] = Integer.parseInt(st.nextToken());
         }
 
+        Arrays.sort(hole);
+
         for(int i=0; i<M; i++){
             st = new StringTokenizer(br.readLine());
 
@@ -26,7 +28,7 @@ public class Main {
             int n2 = Integer.parseInt(st.nextToken());
 
             
-            int cnt = upperBound(n2) - lowerBound(n1);  
+            long cnt = upperBound(n2) - lowerBound(n1);  
             System.out.println(cnt);           
         }
     }
