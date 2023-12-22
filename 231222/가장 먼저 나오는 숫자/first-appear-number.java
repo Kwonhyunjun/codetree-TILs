@@ -38,7 +38,13 @@ public class Main {
                     left = mid + 1; 
                 }
             }
-            int ans = arr[minIdx] == target ? minIdx+1 : -1; 
+            int ans;
+            
+            if(minIdx >= N){ // 찾으려는 숫자가 배열의 최대값을 넘을 경우 배열의 크기를 넘어감 -> 따로 처리 필요
+                ans = -1;
+            }else{
+                ans = arr[minIdx] == target ? minIdx+1 : -1; 
+            }
             sb.append(ans).append("\n"); 
         }
         System.out.println(sb);
