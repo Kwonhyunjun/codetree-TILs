@@ -19,13 +19,15 @@ public class Main {
 
         int ans = 0; 
         for(int i=0; i<N; i++){
-            if( (i+2) > N ) continue;
             for(int j=0; j<N; j++){
+                if( (j+2) >= N ) continue;
+
                 int cnt = 0;
                 for(int k=0; k<3; k++){
-                    // System.out.println(k + " " + j); 
-                    if(map[i][k] == 1) cnt++; 
+                    // System.out.println(i + " " + (k+j)); 
+                    if(map[i][k+j] == 1) cnt++; 
                 }
+                // System.out.println(cnt); 
                 // System.out.println(); 
                 ans = Math.max(ans, cnt); 
             }
