@@ -11,7 +11,7 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         int[] arr = new int[N];
 
-        for(int i = 0 ; i < 5 ; i++){
+        for(int i = 0 ; i < N ; i++){
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
@@ -21,7 +21,7 @@ public class Main {
             int temp = 0;
             for(int j=0; j<N; j++){
                 if(i == j) continue;
-                temp += Math.abs(i-j) * arr[j];
+                temp += (Math.abs(i-j) * arr[j]);
             }
             ans = Math.min(ans, temp); 
         }
