@@ -23,7 +23,7 @@ public class Main {
         
         
         int tmp = map[0][0].equals("W") ? 0 : 1; 
-        jump(0, 0, 0, 0); 
+        jump(0, 0, tmp, 0); 
         System.out.println(ans);
     }
 
