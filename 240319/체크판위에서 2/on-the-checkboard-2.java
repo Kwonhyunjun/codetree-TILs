@@ -31,7 +31,7 @@ public class Main {
     static void jump(int curR, int curC, int type, int cnt){
         // System.out.println("curR : " + curR + " " + "curC : " + curC);
         // System.out.println("R : " + R + " " + "C : " + C);
-        if(curR >= R-1 || curC >= C-1){
+        if(curR == R-1 && curC == C-1){
             // System.out.println("curR : " + curR + " " + "curC : " + curC);
             if(cnt == 3) ans++;
             return; 
