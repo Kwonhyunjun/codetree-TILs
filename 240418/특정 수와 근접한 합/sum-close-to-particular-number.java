@@ -11,7 +11,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int N = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
         target = Integer.parseInt(st.nextToken());
         total = 0;
         ans = Integer.MAX_VALUE;  
@@ -29,7 +29,7 @@ public class Main {
             
         }
 
-        solve(0, 0, 0); 
+        combi(0, 0, 0); 
         System.out.println(ans); 
     }
 
@@ -50,11 +50,14 @@ public class Main {
 
     static void combi(int cnt, int start, int sum){
         if(cnt == 2){
+            int res = Math.abs( target - (total - sum) );
             ans = Math.min(ans, Math.abs( target - (total - sum) ));
             return; 
         }
 
+
         for(int i=start; i<N; i++){
+            
             combi(cnt+1, i+1, sum+arr[i]);  
         }
     }
