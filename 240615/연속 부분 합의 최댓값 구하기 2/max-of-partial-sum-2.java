@@ -15,17 +15,23 @@ public class Main {
         }
         int subMax = Integer.MIN_VALUE; 
 
-        int section = (arr[0] > 0) ? arr[0] : 0; 
+        int section = arr[0]; 
 
         for(int i=1; i<n; i++){
-            section += arr[i]; 
+
+            if(section < 0 && arr[i] < 0){
+                section = arr[i]; 
+            }else{
+                section += arr[i]; 
+            }
             
+
+            subMax = Math.max(subMax, section);
+
             if(section < 0){
                 section = 0; 
                 continue;
             }
-
-            subMax = Math.max(subMax, section);
         }
 
         System.out.println(subMax); 
