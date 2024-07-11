@@ -31,7 +31,6 @@ public class Main {
         }
 
         for(int i=min_idx; i<=max_idx - K; i++){
-            System.out.println("i : "+i); 
             int temp = 0;
             for(int j=0; j<=K; j++){
                 // System.out.printf("arr[%d] = %d ", i+j, arr[i+j]); 
