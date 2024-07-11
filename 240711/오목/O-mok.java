@@ -62,6 +62,10 @@ public class Main {
 
             }
         }
+
+        if(!find){
+            System.out.println(0); 
+        }
     }
 
     static boolean check(int r, int c){
