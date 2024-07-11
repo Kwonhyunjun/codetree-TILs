@@ -37,7 +37,7 @@ public class Main {
                 temp += arr[i+j]; 
             }
             // System.out.println();
-            System.out.println(temp); 
+            // System.out.println(temp); 
             answer = Math.max(answer, temp); 
         }
 
