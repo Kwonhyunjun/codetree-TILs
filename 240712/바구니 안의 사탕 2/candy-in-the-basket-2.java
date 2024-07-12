@@ -11,35 +11,30 @@ public class Main {
 
         int[] arr = new int[101]; 
 
-        int min = 101;
-        int max = 0; 
         int answer = Integer.MIN_VALUE;
 
         for(int i=0; i<N; i++){
             st = new StringTokenizer(br.readLine());
             int candy = Integer.parseInt(st.nextToken());
-            int idx = Integer.parseInt(st.nextToken())-1;
-            // System.out.printf("arr[%d] = %d\n", idx, candy);
-            arr[idx] = candy;
-            min = Math.min(min, idx);
-            max = Math.max(max, idx);
+            int idx = Integer.parseInt(st.nextToken());
+
+            arr[idx] += candy; 
         }
 
-        // System.out.printf("%d %d", min, max);
-        int len = 2*K +1;
-        // System.out.printf("%d\n", len);
-        for(int i=min; i<= (max - len); i++){
-            // System.out.printf("i(%d) : ",i);
+        // System.out.println(arr[33]);
+
+        for(int i = K+1; i<=100-K ; i++){
+            // System.out.printf("i(%d) : ", i);
             int temp = 0;
-            for(int j=0; j<=len; j++){
-                temp += arr[i+j]; 
-                // System.out.printf("%d(%d) ",j+i,arr[j+1]);
+            for(int j= i-K; j <= i+K; j++){
+                // if(i==42)
+                    // System.out.printf("%d(%d) ", j, arr[j]);
+                temp += arr[j]; 
             }
-
-            // System.out.println(); 
-            answer = Math.max(answer, temp);
+            // System.out.println(temp);
+            answer = Math.max(temp, answer); 
         }
-        
+
         System.out.println(answer);
     }
 }
