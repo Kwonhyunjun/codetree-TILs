@@ -21,14 +21,10 @@ public class Main {
             arr[idx] += candy; 
         }
 
-        // System.out.println(arr[33]);
-
-        for(int i = K+1; i<=100-K ; i++){
-            // System.out.printf("i(%d) : ", i);
+        for(int i = 0; i<=100-K ; i++){
             int temp = 0;
             for(int j= i-K; j <= i+K; j++){
-                // if(i==42)
-                    // System.out.printf("%d(%d) ", j, arr[j]);
+                if(j < 0 || j > 100) continue;
                 temp += arr[j]; 
             }
             // System.out.println(temp);
