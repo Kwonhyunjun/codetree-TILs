@@ -31,7 +31,7 @@ public class Main {
         for(int i=min; i<= (max - len); i++){
             // System.out.printf("i(%d) : ",i);
             int temp = 0;
-            for(int j=0; j<len; j++){
+            for(int j=0; j<=len; j++){
                 temp += arr[i+j]; 
                 // System.out.printf("%d(%d) ",j+i,arr[j+1]);
             }
