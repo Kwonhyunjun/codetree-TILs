@@ -10,7 +10,8 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        int[] arr= new int[3];
+        int[] arr = new int[3];
+        int[] num = new int[3];
         st = new StringTokenizer(br.readLine());
         for(int i=0; i<3; i++){
             arr[i] = Integer.parseInt(st.nextToken()); 
@@ -19,32 +20,25 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for(int i=1; i<=N; i++){
-            sb.append(i);
+            num[0] = i;  
             for(int j=1; j<=N; j++){
-                sb.append(j);
+                num[1] = j; 
                 for(int k=1; k<=N; k++){
-                    sb.append(k);
-                    // System.out.println(sb);
-                    boolean flag = false; 
+                    num[2] = k; 
+                    boolean flag = false;
+                    // System.out.println(Arrays.toString(num));
                     for(int l=0; l<3; l++){
-                        int lock = arr[l]; 
-                        int digit = sb.charAt(l) - 48; 
-                        // System.out.printf("%d %d\n", lock, digit);
-
-                        if(Math.abs(lock - digit) <= 2){
+                        if(Math.abs(arr[l] - num[l]) <= 2){
                             flag = true; 
                         }
-                        // System.out.println(flag);
+
                         if(flag){
                             answer++;
                             break;
                         }
                     }
-                    sb.setLength(sb.length()-1);
                 }
-                sb.setLength(sb.length()-1);
             }
-            sb.setLength(sb.length()-1);
         }
 
         System.out.println(answer);
