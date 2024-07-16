@@ -45,14 +45,14 @@ public class Main {
                 //     System.out.printf("map[%d][%d] -> %d dist(%d)\n",r, c, gold, dist);
                 //     dist++; 
                 // }
-                for(int k=1; k<K+1; k++){
+                for(int k=0; k<K+1; k++){
                     v = new boolean[N][N];
                     int gold = bfs(r, c, k); // 개수
                     if((k * k + (k+1) * (k+1)) <= gold * M){
                         answer = Math.max(answer, gold);
                     }
                     // if(r > 2)
-                    //     System.out.printf("map[%d][%d] -> %d dist(%d)\n",r, c, gold, k);
+                        // System.out.printf("map[%d][%d] -> %d dist(%d)\n",r, c, gold, k);
                 }
                 
             }
