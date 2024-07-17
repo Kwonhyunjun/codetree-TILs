@@ -46,7 +46,7 @@ public class Main {
 
             }
         }
-
+        answer = (answer == 0)? -1 : answer; 
         System.out.println(answer); 
     }
 }
