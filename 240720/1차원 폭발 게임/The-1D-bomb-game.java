@@ -21,6 +21,10 @@ public class Main {
 
         lastIdx = N;
         while(true){
+            if(lastIdx == 0){
+                System.out.println(lastIdx);
+                return; 
+            }
             // System.out.printf("전 : %s  / lastIdx = %d \n", Arrays.toString(arr), lastIdx); 
             boolean flag = false; 
             int num = arr[0];
@@ -58,7 +62,7 @@ public class Main {
         StringBuilder sb = new StringBuilder(); 
 
         sb.append(lastIdx).append("\n"); 
-        for(int i=0; i<lastIdx; i++){
+        for(int i=lastIdx-1; i>=0; i--){
             sb.append(arr[i]).append("\n");
         }
         System.out.println(sb);
