@@ -31,7 +31,10 @@ public class Main {
             rotate();
             gravity(); 
         }
-        bomb();
+        while(isBomb()){
+            bomb();
+            gravity(); 
+        }
 
         // StringBuilder sb = new StringBuilder();
         int cnt =0;
