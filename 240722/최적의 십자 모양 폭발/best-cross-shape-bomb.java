@@ -23,6 +23,7 @@ public class Main {
 
         for(int r=0; r<N; r++){
             for(int c=0; c<N; c++){
+                // System.out.printf("map[%d][%d] = %d\n", r, c, map[r][c]);
                 bomb(r, c);
                 gravity();
                 answer = Math.max(answer, countPair());
@@ -88,7 +89,7 @@ public class Main {
                 if(temp[r][c] == 0) continue; 
                 if(temp[r][c] == temp[r][c+1]){
                     cnt++;
-                    c++; 
+                    // c++; 
                 }
             }
         }
@@ -98,11 +99,11 @@ public class Main {
                 if(temp[r][c] == 0) continue; 
                 if(temp[r][c] == temp[r+1][c]){
                     cnt++;
-                    r++; 
+                    // r++; 
                 }
             }
         }
-
+        // System.out.println(cnt);
         return cnt; 
     }
 }
