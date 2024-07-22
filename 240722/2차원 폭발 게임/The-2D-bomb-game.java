@@ -23,11 +23,15 @@ public class Main {
         }
         
         for(int i=0; i<K; i++){
-            bomb();
-            gravity(); 
+            // System.out.println(i);
+            while(isBomb()){
+                bomb();
+                gravity(); 
+            }
             rotate();
             gravity(); 
         }
+        bomb();
 
         // StringBuilder sb = new StringBuilder();
         int cnt =0;
@@ -42,7 +46,6 @@ public class Main {
     }
 
     static void bomb(){
-        
         for(int c=0; c<N; c++){
             int num = 0;
             int cnt = 1;
@@ -55,10 +58,7 @@ public class Main {
                     break; 
                 }
             }
-
-
             // System.out.printf("현재행 : %d 시작열 : %d \n", c, start); 
-
             if(start == -1) continue;
             for(int r=start+1; r<N; r++){
                 // System.out.printf("r : %d, cnt : %d \n", r, cnt);
@@ -128,5 +128,41 @@ public class Main {
         //     System.out.println(Arrays.toString(map[i])); 
         // }
         // System.out.println();
+    }
+
+    static boolean isBomb(){
+         for(int c=0; c<N; c++){
+            int num = 0;
+            int cnt = 1;
+            // 시작행 찾기
+            int start = -1; 
+            for(int i=0; i<N; i++){
+                if(map[i][c] != 0){
+                    start = i; 
+                    num = map[i][c]; 
+                    break; 
+                }
+            }
+            // System.out.printf("현재행 : %d 시작열 : %d \n", c, start); 
+            if(start == -1) continue;
+            for(int r=start+1; r<N; r++){
+                // System.out.printf("r : %d, cnt : %d \n", r, cnt);
+                if(num == map[r][c]){
+                    // System.out.println("연속");
+                    cnt++; 
+                }else{
+                    if(cnt >= M){
+                        return true; 
+                    }
+                    num = map[r][c]; 
+                    cnt = 1; 
+                }
+            }
+            // System.out.printf("현재행 : %d 카운트 : %d \n", c, cnt); 
+            if(cnt >= M){
+                return true; 
+            }
+        }
+        return false;
     }
 }
