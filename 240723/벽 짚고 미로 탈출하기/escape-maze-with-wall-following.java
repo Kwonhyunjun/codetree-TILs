@@ -76,10 +76,16 @@ public class Main {
             }
 
             if(map[nr][nc] == '#'){
+                int count = 0; 
                 while(!isOut(nr,nc) && map[nr][nc] == '#'){
+                    if(count >= 4){
+                        System.out.println(-1); 
+                        return; 
+                    }
                     d = rotate(d, 1);
                     nr = r + dr[d];
                     nc = c + dc[d]; 
+                    count++; 
                 }
                 r += dr[d];
                 c += dc[d]; 
