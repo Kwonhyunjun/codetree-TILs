@@ -5,7 +5,7 @@ public class Main {
     
     static int N;
     static char[][] map; 
-    static boolean[][] v; 
+    static int[][] v; 
     static int[] dr = {0, 1, 0, -1}; // +시계방향 - 반시계방향
     static int[] dc = {1, 0, -1, 0}; 
 
@@ -15,7 +15,7 @@ public class Main {
 
         N = Integer.parseInt(br.readLine());
         map = new char[N][N]; 
-        v = new boolean[N][N]; 
+        v = new int[N][N]; 
 
         st = new StringTokenizer(br.readLine());
         int sr = Integer.parseInt(st.nextToken())-1;
@@ -31,11 +31,8 @@ public class Main {
         int cnt = 0; 
         
         while(!isOut(r, c)){
-            // if(v[r][c]){
-            //     System.out.println(-1);
-            //     return; 
-            // }
-            // v[r][c] = true; 
+            
+            v[r][c]++; 
             int nr = r + dr[d];
             int nc = c + dc[d]; 
             // String cur = (d == 0) ? "우" : (d == 1)? "하" : (d==2)? "좌" : "상";
@@ -61,10 +58,11 @@ public class Main {
                 cnt++; 
             }
 
-            if(cnt != 0 && r == sr && c == sc){
+            if(v[r][c] >= 3){
                 System.out.println(-1);
                 return; 
             }
+
             if(map[r][c] == '#'){
                 System.out.println(-1);
                 return; 
