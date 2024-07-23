@@ -31,11 +31,11 @@ public class Main {
         int cnt = 0; 
         
         while(!isOut(r, c)){
-            if(v[r][c]){
-                System.out.println(-1);
-                return; 
-            }
-            v[r][c] = true; 
+            // if(v[r][c]){
+            //     System.out.println(-1);
+            //     return; 
+            // }
+            // v[r][c] = true; 
             int nr = r + dr[d];
             int nc = c + dc[d]; 
             // String cur = (d == 0) ? "우" : (d == 1)? "하" : (d==2)? "좌" : "상";
@@ -52,10 +52,19 @@ public class Main {
             //     System.out.println(Arrays.toString(temp[i]));
             // }
             
-            // if(cnt != 0 && r == sr && c == sc){
-            //     System.out.println(-1);
-            //     return; 
-            // }
+            if(!hasWall(r, c, d)){
+                d = rotate(d, 0); 
+                r = r + dr[d];
+                c = c + dc[d];
+                nr = r + dr[d];
+                nc = c + dc[d];
+                cnt++; 
+            }
+
+            if(cnt != 0 && r == sr && c == sc){
+                System.out.println(-1);
+                return; 
+            }
             if(map[r][c] == '#'){
                 System.out.println(-1);
                 return; 
@@ -67,7 +76,11 @@ public class Main {
             }
 
             if(map[nr][nc] == '#'){
-                d = rotate(d, 1);
+                while(!isOut(nr,nc) && map[nr][nc] == '#'){
+                    d = rotate(d, 1);
+                    nr = r + dr[d];
+                    nc = c + dc[d]; 
+                }
                 r += dr[d];
                 c += dc[d]; 
                 cnt++; 
