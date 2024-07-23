@@ -4,7 +4,8 @@ import java.util.*;
 public class Main {
     
     static int N;
-    static char[][] map;  
+    static char[][] map; 
+    static boolean[][] v; 
     static int[] dr = {0, 1, 0, -1}; // +시계방향 - 반시계방향
     static int[] dc = {1, 0, -1, 0}; 
 
@@ -14,6 +15,7 @@ public class Main {
 
         N = Integer.parseInt(br.readLine());
         map = new char[N][N]; 
+        v = new boolean[N][N]; 
 
         st = new StringTokenizer(br.readLine());
         int sr = Integer.parseInt(st.nextToken())-1;
@@ -24,14 +26,20 @@ public class Main {
         }
 
         int d = 0; // 우측을 바라보고 있음
-        int nr = sr;
-        int nc = sc; 
+        int r = sr;
+        int c = sc; 
         int cnt = 0; 
         
-        while(!isOut(nr, nc)){
-            int tempR = nr + dr[d];
-            int tempC = nc + dc[d]; 
-            // System.out.printf("%d %d \n", tempR, tempC);
+        while(!isOut(r, c)){
+            if(v[r][c]){
+                System.out.println(-1);
+                return; 
+            }
+            v[r][c] = true; 
+            int nr = r + dr[d];
+            int nc = c + dc[d]; 
+            // String cur = (d == 0) ? "우" : (d == 1)? "하" : (d==2)? "좌" : "상";
+            // System.out.printf("%d %d %s \n", nr, nc, cur);
 
             // char[][] temp = new char[N][N];
             // for(int i=0; i<N; i++){
@@ -39,33 +47,44 @@ public class Main {
             //         temp[i][j] = map[i][j]; 
             //     }
             // }
-            // temp[nr][nc] = '*'; 
+            // temp[r][c] = '*'; 
             // for(int i=0; i<N; i++){
             //     System.out.println(Arrays.toString(temp[i]));
             // }
             
-            if(cnt != 0 && nr == sr && nc == sc){
+            // if(cnt != 0 && r == sr && c == sc){
+            //     System.out.println(-1);
+            //     return; 
+            // }
+            if(map[r][c] == '#'){
                 System.out.println(-1);
                 return; 
             }
 
-            if(!isOut(tempR,tempC) && map[tempR][tempC] == '#'){
+            if(isOut(nr, nc)){
+                cnt++;
+                break;
+            }
+
+            if(map[nr][nc] == '#'){
                 d = rotate(d, 1);
-                nr += dr[d];
-                nc += dc[d];
-                cnt++ ;
+                r += dr[d];
+                c += dc[d]; 
+                cnt++; 
             }else{
                 if(hasWall(nr, nc, d)){
-                    nr += dr[d];
-                    nc += dc[d];
+                    r += dr[d];
+                    c += dc[d];
                     cnt++;
                 }else{
-                    d= rotate(d, 0); 
-                    nr += dr[d];
-                    nc += dc[d];
-                    cnt++; 
+                    d = rotate(d, 0); 
+                    r = nr + dr[d];
+                    c = nc + dc[d]; 
+                    cnt += 2; 
                 }
             }
+            // System.out.println("cnt : "+cnt); 
+            
         }
 
         System.out.println(cnt); 
