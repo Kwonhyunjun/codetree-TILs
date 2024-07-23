@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
 
     static int answer, N, map[][]; 
-
+    static boolean[][][] v ;
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
         StringTokenizer st; 
@@ -40,6 +40,8 @@ public class Main {
         int cnt = 1; 
         int nr = r; 
         int nc = c; 
+        v = new boolean[N][N][4]; 
+        v[nr][nc][d] = true; 
         // String dir = (d == 0) ? "상" : (d ==1)? "하" : (d==2)? "좌" : "우"; 
         // System.out.printf("시작 : %d %d 방향 : %s 카운트 : %d\n", r, c, dir, cnt);
         while(true){
@@ -48,7 +50,10 @@ public class Main {
             cnt++;
             if(!isRange(nr, nc)){
                 break; 
-            } 
+            }
+            if(v[nr][nc][d]){
+                return -1; 
+            }
             if(map[nr][nc] == 1){
                 d = turn(1, d); 
                 // System.out.println("1번"); 
@@ -56,6 +61,7 @@ public class Main {
                 d = turn(2, d); 
                 // System.out.println("2번");
             }
+            v[nr][nc][d] = true; 
             // System.out.printf("%d %d 방향 : %s 카운트 : %d\n", nr, nc, dir, cnt);
         }
 
