@@ -53,14 +53,15 @@ public class Main {
                 int nr = m.r;
                 int nc = m.c;
                 // System.out.println("이동 전 " + nr + " " + nc);
-                for(int i=0; i<m.v; i++){
-                    nr = nr + dr[m.d];
-                    nc = nc + dc[m.d];
-
-                    if(((m.d == 1 || m.d == 2) && (nc == 0 || nc == N-1)) || (m.d == 0 || m.d == 3) && (nr == 0 || nr == N-1)){
+                for(int i=0; i<m.v; i++){ // 상 좌 우 하
+                    if((m.d == 0 && nr == 0) || (m.d == 1 && nc == 0) ||
+                        (m.d == 2 && nc == N-1) || (m.d == 3 && nr == N-1)){
                         m.d = 3 - m.d; 
                         // System.out.println("방향전환");
                     }
+
+                    nr = nr + dr[m.d];
+                    nc = nc + dc[m.d];
 
                     // System.out.println(nr + " " + nc); 
                 }
