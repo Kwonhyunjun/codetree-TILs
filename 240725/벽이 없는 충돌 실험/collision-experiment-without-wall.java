@@ -25,6 +25,7 @@ public class Main {
         dmap.put('L', 2);
         dmap.put('R', 3); 
 
+        StringBuilder res = new StringBuilder(); 
         for(int tc=0; tc<TC; tc++){
             int N = Integer.parseInt(br.readLine()); // 구슬 개수
             List<Marble> list = new ArrayList<>(); // 구슬 저장 리스트
@@ -61,7 +62,7 @@ public class Main {
                     m.r = nr;
                     m.c = nc; 
 
-                    sb.setLength(0); 
+                    sb = new StringBuilder();
                     sb.append(nr).append("/").append(nc);
                     
                     String key = sb.toString();
@@ -88,8 +89,9 @@ public class Main {
                     map.put(key, marble); 
                 }
             }
-            System.out.println(answer);
+            res.append(answer).append("\n");
         } 
+        System.out.println(res);
     }
 
     static class Marble implements Comparable<Marble>{
