@@ -42,16 +42,15 @@ public class Main {
 
             int answer = -1; 
 
-            int t = 0;
-            while(!list.isEmpty()){
+            for(int t=1; t<=4001; t++){
                 HashMap<String, Marble> map = new HashMap<>();
-                t++; 
+
                 // 이동
                 StringBuilder sb = new StringBuilder(); 
                 for(Marble m : list){
-                    // if(!m.isIn || !m.isAlive) continue; 
+                    if(!m.isIn || !m.isAlive) continue; 
                     
-                    if(m.r > 2000 || m.c > 2000 || m.r < -2000 || m.c < -2000){
+                    if(m.r > 1000 || m.c > 1000 || m.r < -1000 || m.c < -1000){
                         m.isIn = false;
                         continue; 
                     }
@@ -72,19 +71,22 @@ public class Main {
                         answer = t; 
                         if(data.w == marble.w){
                             if(data.n > marble.n){
+                                marble.isAlive = false; 
                                 marble = data;     
+                            }else{
+                                data.isAlive = false; 
                             }
                         }else{
                             if(data.w > marble.w){
+                                marble.isAlive = false;
                                 marble = data; 
+                            }else{
+                                data.isAlive = false; 
                             }
                         }
                     }
                     map.put(key, marble); 
                 }
-
-                list = new ArrayList<>(map.values());
-                
             }
             System.out.println(answer);
         } 
