@@ -43,13 +43,12 @@ public class Main {
             int answer = -1; 
 
             for(int t=1; t<=4001; t++){
-                HashMap<String, PriorityQueue<Marble>> map = new HashMap<>();
+                HashMap<String, Marble> map = new HashMap<>();
 
                 // 이동
                 StringBuilder sb = new StringBuilder(); 
                 for(Marble m : list){
                     if(!m.isIn || !m.isAlive) continue; 
-                    // System.out.printf("%d %f %f %c %d \n", m.n, m.r, m.c, m.d, m.w);
                     
                     if(m.r > 1000 || m.c > 1000 || m.r < -1000 || m.c < -1000){
                         m.isIn = false;
@@ -61,30 +60,32 @@ public class Main {
                     
                     m.r = nr;
                     m.c = nc; 
-                    // System.out.printf("nextPos : %f %f\n", nr , nc);
 
                     sb.setLength(0); 
                     sb.append(nr).append("/").append(nc);
-                    // System.out.println(sb.toString());
-                    // map.getOrDefault(sb.toString(), new PriorityQueue<Marble>()).add(m);
                     
-                    // computeIfAbsent를 사용하여 키가 없을 경우 새로운 PriorityQueue를 생성하여 map에 저장
-                    map.computeIfAbsent(sb.toString(), k -> new PriorityQueue<>()).add(m);
-                    // System.out.println(map.get(sb.toString()));
-                    // for(Marble ma : map.get(sb.toString())){
-                    //     System.out.println(ma.r + " " + ma.c);
-                    // }
-                }
-                // System.out.println("t : " + t);
-                for(Map.Entry<String, PriorityQueue<Marble>> entry : map.entrySet()){
-                    PriorityQueue<Marble> pq = entry.getValue(); 
-                    // System.out.println(entry.getKey() + " " + pq.size());
-                    if(pq.size() > 1){
-                        while(pq.size() > 1){
-                            pq.poll().isAlive = false; 
-                        }
+                    String key = sb.toString();
+                    Marble marble = m;
+                    Marble data = map.get(key);
+                    if(data != null){
                         answer = t; 
+                        if(data.w == marble.w){
+                            if(data.n > marble.n){
+                                marble.isAlive = false; 
+                                marble = data;     
+                            }else{
+                                data.isAlive = false; 
+                            }
+                        }else{
+                            if(data.w > marble.w){
+                                marble.isAlive = false;
+                                marble = data; 
+                            }else{
+                                data.isAlive = false; 
+                            }
+                        }
                     }
+                    map.put(key, marble); 
                 }
             }
             System.out.println(answer);
