@@ -14,7 +14,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
         
         arr = br.readLine().toCharArray(); 
-
+        answer = Integer.MIN_VALUE;
         solve(97); 
         System.out.println(answer); // 'a' - > 97 'f' -> 102
  
