@@ -25,18 +25,16 @@ public class Main {
 
     static void solve(int cnt, int prev){
         if(flag) return; 
-
         if(cnt == N){
-            if(check()){
+            // System.out.println(Arrays.toString(arr)); 
+            if(check(cnt)){
                 flag = true;
                 StringBuilder sb = new StringBuilder(); 
 
                 for(int i=0; i<arr.length; i++){
                     sb.append(arr[i]);
                 }
-                // System.out.println(Arrays.toString(arr)); 
                 answer = sb.toString();
-                
             }
             return; 
         }
@@ -44,17 +42,19 @@ public class Main {
         for(int i=4; i<7; i++){
             if(prev == i) continue;
             arr[cnt] = i; 
-            solve(cnt+1, i); 
+            if(check(cnt)){
+                solve(cnt+1, i); 
+            } 
         }
     }
 
-    static boolean check(){
+    static boolean check(int len){
         StringBuilder sb1 = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
 
-        for(int s=0; s<N-1; s++){ // 시작위치 
+        for(int s=0; s<len-1; s++){ // 시작위치 
             // System.out.printf("s : %d\n", s); 
-            for(int l=0; l<(N-s)/2; l++){
+            for(int l=0; l<(len-s)/2; l++){
                 // System.out.printf("l : %d\n", l);
 
                 for(int j = s; j <= s+l; j++){
