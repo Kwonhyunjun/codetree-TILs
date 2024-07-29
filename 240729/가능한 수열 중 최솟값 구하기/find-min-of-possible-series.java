@@ -8,7 +8,8 @@ import java.util.*;
 
 public class Main {
 
-    static int N, arr[], answer; 
+    static int N, arr[];
+    static String answer;  
     static boolean flag = false; 
     static ArrayList<Integer> list = new ArrayList<>(); 
 
@@ -34,7 +35,7 @@ public class Main {
                     sb.append(arr[i]);
                 }
                 // System.out.println(Arrays.toString(arr)); 
-                answer = Integer.parseInt(sb.toString());
+                answer = sb.toString();
                 
             }
             return; 
