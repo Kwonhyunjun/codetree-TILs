@@ -28,6 +28,7 @@ public class Main {
 
     static void play(int cnt, int[] curPos){
         if(cnt == N){
+            // System.out.println(Arrays.toString(curPos)); 
             int score = 0; 
             for(int i=0; i<K; i++){
                 if(curPos[i] >= M) score++;
@@ -36,8 +37,8 @@ public class Main {
             return; 
         }
 
+        // System.out.println(cnt + " " + Arrays.toString(curPos));
         for(int i=0; i<K; i++){
-            if(curPos[i] >= M) continue;
 
             curPos[i] += moves[cnt]; 
             play(cnt+1, curPos); 
