@@ -34,6 +34,9 @@ public class Main {
 
     static int calculate(){
         int res = mapper[arr[0]]; 
+        if(arr.length == 1){
+            return res; 
+        }
         char oper = arr[1]; 
 
         for(int i = 2; i<arr.length; i++){
