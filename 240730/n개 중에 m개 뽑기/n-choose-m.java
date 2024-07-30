@@ -15,8 +15,8 @@ public class Main {
 
         arr = new int[M];
 
-        // comb(0, 0); 
-        comb2(1, 0); 
+        comb(0, 0); 
+        // comb2(1, 0); 
         
         System.out.println(sb); 
     }
@@ -24,15 +24,18 @@ public class Main {
     static void comb(int idx, int start){
         if(idx == M){
             for(int i=0; i<M; i++){
-                sb.append(arr[i]).append(" ");
+                sb.append(list.get(i)).append(" ");
+                // sb.append(arr[i]).append(" ");
             }
             sb.append("\n");
             return; 
         }
 
         for(int i=start+1; i<=N; i++){
-            arr[idx] = i;
+            // arr[idx] = i;
+            list.add(i);
             comb(idx+1, i); 
+            list.remove(list.size()-1); 
         }
     }
 
