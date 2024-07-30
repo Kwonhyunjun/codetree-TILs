@@ -15,8 +15,9 @@ public class Main {
 
         arr = new int[M];
 
-        comb(0, 0); 
-
+        // comb(0, 0); 
+        comb2(1, 0); 
+        
         System.out.println(sb); 
     }
 
@@ -33,5 +34,32 @@ public class Main {
             arr[idx] = i;
             comb(idx+1, i); 
         }
+    }
+
+    /*
+        curNum : 현재 고려하고 있는 숫자
+        cnt : 이때까지 넣은 숫자 개수
+    */
+    static ArrayList<Integer> list = new ArrayList<>(); 
+    static void comb2(int curNum, int cnt){
+
+        if(curNum == N+1){
+            if(list.size() == M){
+                for(int i=0; i<M; i++){
+                    sb.append(list.get(i)).append(" ");
+                }
+                sb.append("\n");
+            }
+            return; 
+        }
+
+        // 현재 고려하고 있는 숫자 추가 
+        list.add(curNum);
+        comb2(curNum+1, cnt+1);
+        list.remove(list.size()-1); 
+
+        // 추가 X
+        comb2(curNum+1, cnt); 
+
     }
 }
