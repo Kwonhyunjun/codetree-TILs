@@ -76,7 +76,12 @@ public class Main {
             }
         }
 
+        // for(int i=0; i<11; i++){
+        //     System.out.println(Arrays.toString(dist[i]));
+        // }
+
         arr = new int[3]; 
+        // System.out.println("size : " + (coins.size()-2)); 
         choose(0, 1); 
         System.out.println(answer);
     }
@@ -88,12 +93,14 @@ public class Main {
 
     // 동전 순서 정하기
     public static void choose(int idx, int start){
+        // System.out.printf("idx : %d, start : %d \n", idx, start); 
         if(idx == 3){
+            // System.out.println(Arrays.toString(arr)); 
             answer = Math.min(answer, getTotalDist());
             return; 
         }
-
-        for(int i=start; i<coins.size()-2; i++){
+        
+        for(int i=start; i<=coins.size()-2; i++){
             arr[idx] = i; 
             choose(idx+1, i+1); 
         }
