@@ -26,14 +26,29 @@ public class Main {
             } 
         }
 
-        for(int i=1; i<maxHeight; i++){ // 빗물양
+        // 안전지대 찾기
+        int safeZone = 0; 
+        for(int r=0; r<N; r++){
+            for(int c=0; c<M; c++){
+                if(map[r][c] <= 1) continue; // 물에 잠겨있다면
+                if(v[r][c]) continue; // 이미 방문했다면
+                safeZone++;
+                dfs(r, c, 1); 
+            }
+        }
+
+        // 안전지대 갱신
+        answer[0] = 1;
+        answer[1] = safeZone; 
+
+        for(int i=2; i<maxHeight; i++){ // 빗물양
             // 방문배열 초기화
             for(int r=0; r<N; r++){
                 Arrays.fill(v[r], false); 
             }
 
             // 안전지대 찾기
-            int safeZone = 0; 
+            safeZone = 0; 
             for(int r=0; r<N; r++){
                 for(int c=0; c<M; c++){
                     if(map[r][c] <= i) continue; // 물에 잠겨있다면
