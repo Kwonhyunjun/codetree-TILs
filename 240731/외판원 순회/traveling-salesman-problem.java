@@ -31,6 +31,10 @@ public class Main {
     public static void solve(int idx){
         if(idx == N-1){
             // System.out.println(list); 
+            // if(getTotalCost() == Integer.MAX_VALUE) {
+            //     System.out.println("불가능한 경로"); 
+            // }
+            // System.out.println(getTotalCost()); 
             answer = Math.min(answer, getTotalCost()); 
             return; 
         }
@@ -61,6 +65,8 @@ public class Main {
             res += cost; 
             curPos = next; 
         }
+
+        if(costs[curPos][0] == 0) return Integer.MAX_VALUE; 
         res += costs[curPos][0];
 
         // System.out.println("res : " + res); 
