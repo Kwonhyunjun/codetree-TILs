@@ -4,6 +4,7 @@ import java.util.*;
 public class Main {
 
     static int N, M, map[][];
+    static boolean[][] v; 
     static boolean canEscape; 
 
     public static void main(String[] args) throws Exception{
@@ -14,6 +15,7 @@ public class Main {
         M = Integer.parseInt(st.nextToken()); 
         
         map = new int[N][M];
+        v = new boolean[N][M]; 
 
         for(int r=0; r<N; r++){
             st = new StringTokenizer(br.readLine()); 
@@ -23,6 +25,7 @@ public class Main {
         }
 
         canEscape = false; 
+        v[0][0] = true; 
         dfs(0, 0); 
 
         int answer = (canEscape) ? 1 : 0;
@@ -45,7 +48,9 @@ public class Main {
 
             if(nr < 0 || nc < 0 || nr >= N || nc >= M) continue; 
             if(map[nr][nc] != 1) continue; 
+            if(v[nr][nc]) continue; 
 
+            v[nr][nc] = true; 
             dfs(nr, nc); 
         }
     }
