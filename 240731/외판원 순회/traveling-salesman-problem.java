@@ -55,8 +55,10 @@ public class Main {
         for(int i=0; i<list.size(); i++){
             int next = list.get(i); 
 
-            // System.out.println(costs[curPos][next]);
-            res += costs[curPos][next]; 
+            int cost = costs[curPos][next];
+            if(cost == 0) return Integer.MAX_VALUE; 
+
+            res += cost; 
             curPos = next; 
         }
         res += costs[curPos][0];
