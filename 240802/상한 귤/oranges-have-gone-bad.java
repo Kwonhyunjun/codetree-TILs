@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
 
     static int N, K, map[][], answer[][];
-    static boolean v[][]; 
+    static boolean[][] v; 
     static ArrayList<int[]> rotten = new ArrayList<>(); 
 
     public static void main(String[] args) throws Exception{
@@ -19,10 +19,6 @@ public class Main {
         v = new boolean[N][N];
 
         for(int i=0; i<N; i++){
-            Arrays.fill(answer[i], Integer.MAX_VALUE); 
-        }
-
-        for(int i=0; i<N; i++){
             st = new StringTokenizer(br.readLine());
             for(int j=0; j<N ;j++){
                 map[i][j] = Integer.parseInt(st.nextToken());
@@ -35,6 +31,10 @@ public class Main {
         }
 
         for(int i=0; i<rotten.size(); i++){
+            for(int j=0; j<N; j++){
+                Arrays.fill(v[j], false); 
+            }
+
             int[] cur = rotten.get(i); 
             bfs(cur[0] , cur[1]);
         }
@@ -43,7 +43,7 @@ public class Main {
 
         for(int i=0; i<N; i++){
             for(int j=0; j<N; j++){
-                int num = (answer[i][j] == Integer.MAX_VALUE)? -2 : answer[i][j]; 
+                int num = (answer[i][j] == 0 && map[i][j] != 2)? -2 : answer[i][j]; 
                 sb.append(num).append(" ");
             }
             sb.append("\n"); 
@@ -58,7 +58,8 @@ public class Main {
     public static void bfs(int sr, int sc){
         Queue<int[]> q = new ArrayDeque<>(); 
         
-        answer[sr][sc] = 0; 
+        v[sr][sc] = true; 
+        answer[sr][sc] = 0;
         q.offer(new int[]{sr, sc, 0});
 
         while(!q.isEmpty()){
@@ -69,9 +70,12 @@ public class Main {
                 int nc = cur[1] + dc[d]; 
 
                 if(nr < 0 || nc < 0 || nr >= N || nc >= N) continue; 
-                if(answer[nr][nc] < (cur[2]+1)) continue;
+                if(map[nr][nc] != 1) continue; 
+                if(v[nr][nc]) continue;
 
-                answer[nr][nc] = cur[2]+1;
+                v[nr][nc] = true; 
+                
+                answer[nr][nc] = (answer[nr][nc] == 0) ? cur[2]+1 : Math.min(cur[2]+1, answer[nr][nc]);
                 q.offer(new int[]{nr, nc, cur[2]+1}); 
             }
         }
