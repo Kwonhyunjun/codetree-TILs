@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     
     static int N, map[][], points[], answer; 
-    static boolean[][] v;
+    static boolean flag, v[][];
 
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -14,6 +14,7 @@ public class Main {
 
         map = new int[N][N]; 
         v = new boolean[N][N]; 
+        flag = false; 
 
         st = new StringTokenizer(br.readLine());
         points = new int[4]; 
@@ -23,6 +24,7 @@ public class Main {
 
         bfs(points[0], points[1]); 
 
+        answer = (flag)? answer : -1; 
         System.out.println(answer);
     }
 
@@ -39,6 +41,7 @@ public class Main {
             int[] cur = q.poll();
 
             if(cur[0] == points[2] && cur[1] == points[3]){
+                flag = true; 
                 answer = cur[2]; 
                 return; 
             }
