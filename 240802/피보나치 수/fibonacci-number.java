@@ -38,7 +38,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(br.readLine());
-        dp = new int[N+1];
+        dp = new int[N+10];
 
         dp[1] = 1;
         dp[2] = 1;
