@@ -7,7 +7,7 @@ public class Main {
         
         int N = Integer.parseInt(br.readLine());
 
-        int[] dp = new int[N+1]; 
+        int[] dp = new int[20]; 
         
         dp[0] = 1; 
         dp[1] = 1; 
