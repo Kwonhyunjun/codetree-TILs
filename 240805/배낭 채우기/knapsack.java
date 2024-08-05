@@ -17,7 +17,7 @@ public class Main {
             items[i][1] = Integer.parseInt(st.nextToken()); // 가치
         }
 
-        int[][] dp = new int[N][M+1]; 
+        int[][] dp = new int[N][10000001]; 
     
         // 초기화(첫 아이템)
         dp[0][items[0][0]] = items[0][1];
