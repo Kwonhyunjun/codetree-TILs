@@ -17,10 +17,17 @@ public class Main {
             items[i][1] = Integer.parseInt(st.nextToken()); // 가치
         }
 
-        int[][] dp = new int[N][10000001]; 
+        int[][] dp = new int[N][M+1]; 
     
         // 초기화(첫 아이템)
-        dp[0][items[0][0]] = items[0][1];
+        // dp[0][items[0][0]] = items[0][1];
+
+         // 초기화(첫 아이템)
+        for(int w = 0; w <= M; w++) {
+            if (w >= items[0][0]) {
+                dp[0][w] = items[0][1];
+            }
+        }
 
         for(int i=1; i<N; i++){ // 물건을 순회하면서
 
