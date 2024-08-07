@@ -15,11 +15,12 @@ public class Main {
             map[i] = Integer.parseInt(st.nextToken()); 
         }
 
-        Arrays.fill(dp, Integer.MIN_VALUE); 
+        Arrays.fill(dp, 1); 
         dp[0] = 1; 
 
         for(int i=1; i<N; i++){
-            for(int j=0; j<N; j++){
+            for(int j=0; j<i; j++){
+
                 if(map[j] < map[i]){
                     dp[i] = Math.max(dp[i], dp[j]+1); 
                 }
