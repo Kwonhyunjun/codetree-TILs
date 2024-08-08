@@ -10,12 +10,12 @@ public class Main {
         int M = Integer.parseInt(st.nextToken()); 
 
         int[][] map = new int[N][M]; 
-        int[][] dp = new int[N][N]; 
+        int[][] dp = new int[N][M]; 
 
         for(int i=0; i<N; i++){
             st = new StringTokenizer(br.readLine()); 
             Arrays.fill(dp[i], Integer.MIN_VALUE);
-            for(int j=0; j<N; j++){
+            for(int j=0; j<M; j++){
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
@@ -23,7 +23,7 @@ public class Main {
         dp[0][0] = 1; 
 
         for(int r=1; r<N; r++){
-            for(int c=1; c<N; c++){
+            for(int c=1; c<M; c++){
                 
                 for(int i=0; i<r; i++){
                     for(int j=0; j<c; j++){
@@ -43,11 +43,12 @@ public class Main {
 
         int answer = 0; 
         for(int i=1; i<N; i++){
-            for(int j=1; j<N; j++){
+            for(int j=1; j<M; j++){
                 answer = Math.max(answer, dp[i][j]); 
             }
         }
 
-        System.out.println(answer); 
+        System.out.println(answer);
+
     }
 }
