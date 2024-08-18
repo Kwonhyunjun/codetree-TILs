@@ -10,16 +10,16 @@ public class Main {
         long K = Long.parseLong(st.nextToken()); 
 
         st = new StringTokenizer(br.readLine());
-        long[] arr = new long[N]; 
+        int[] arr = new int[N]; 
         for(int i=0; i<N; i++){
-            arr[i] = Long.parseLong(st.nextToken()); 
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
         HashMap<Long, Integer> map = new HashMap<>();
 
         for(int i=0; i<N; i++){
             for(int j=i+1; j<N; j++){
-                map.put(arr[i] + arr[j], map.getOrDefault(arr[i] + arr[j], 0)+1); 
+                map.put((long) arr[i] + (long) arr[j], map.getOrDefault((long) arr[i] + (long) arr[j], 0)+1); 
             }
         }
 
