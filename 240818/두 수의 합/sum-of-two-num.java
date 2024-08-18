@@ -16,13 +16,15 @@ public class Main {
         }
 
         HashMap<Long, Integer> map = new HashMap<>();
+        long count = 0;
 
         for(int i=0; i<N; i++){
-            for(int j=i+1; j<N; j++){
-                map.put((long) arr[i] + (long) arr[j], map.getOrDefault((long) arr[i] + (long) arr[j], 0)+1); 
+            if(map.containsKey(K-arr[i])){
+                count += map.get(K - arr[i]); 
             }
+            map.put((long) arr[i], map.getOrDefault((long) arr[i], 0)+1); 
         }
 
-        System.out.println(map.get(K));
+        System.out.println(count);
     }
 }
