@@ -96,8 +96,8 @@ public class Main {
                 int down = (j == 0) ? 0 : dp[i-1][j-1] % 1000000007; 
                 int up = (j==9) ? 0 : dp[i-1][j+1] % 1000000007; 
 
-                dp[i][j] = down + up; 
-                // dp[i][j] = (down + up) % 1000000007; 
+                // dp[i][j] = down + up; 
+                dp[i][j] = (down + up) % 1000000007; 
 
             }
         }
