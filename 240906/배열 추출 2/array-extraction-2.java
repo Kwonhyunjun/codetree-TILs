@@ -7,7 +7,20 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine()); 
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>(); 
+        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>(){
+
+            @Override
+            public int compare(Integer o1, Integer o2){
+                int n1 = Math.abs(o1);
+                int n2 = Math.abs(o2);
+
+                if(n1 == n2){
+                    return o1 - o2; 
+                }
+
+                return n1 - n2; 
+            }
+        }); 
         StringBuilder sb = new StringBuilder(); 
 
         for(int i=0; i<N; i++){
