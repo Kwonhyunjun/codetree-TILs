@@ -3,13 +3,13 @@ import java.io.*;
 
 public class Main {
 
-    static int M, start, end; 
+    static long M, start, end; 
 
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
-        M = Integer.parseInt(br.readLine()); 
+        M = Long.parseLong(br.readLine()); 
 
         st = new StringTokenizer(br.readLine());
         start = Integer.parseInt(st.nextToken());
@@ -19,7 +19,7 @@ public class Main {
         int max = Integer.MIN_VALUE;
 
         
-        for(int i = start ; i<=end; i++){
+        for(long i = start ; i<=end; i++){
             // System.out.printf("타겟값 : %d\n", i);
             // System.out.println(binary_search(i)); 
             int result = binary_search(i);
@@ -33,14 +33,14 @@ public class Main {
     }
 
 
-    static int binary_search(int target){
+    static int binary_search(long target){
         int cnt = 0;
 
-        int left = 1; 
-        int right = M; 
+        long left = 1; 
+        long right = M; 
 
         while(left <= right){
-            int mid = (left + right) / 2; 
+            long mid = (left + right) / 2; 
             // System.out.printf("mid %d\n", mid);
             cnt++; 
 
