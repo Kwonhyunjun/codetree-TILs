@@ -12,17 +12,17 @@ public class Main {
         M = Long.parseLong(br.readLine()); 
 
         st = new StringTokenizer(br.readLine());
-        start = Integer.parseInt(st.nextToken());
-        end = Integer.parseInt(st.nextToken());
+        start = Long.parseLong(st.nextToken());
+        end = Long.parseLong(st.nextToken());
 
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
+        long min = Long.MAX_VALUE;
+        long max = Long.MIN_VALUE;
 
         
         for(long i = start ; i<=end; i++){
             // System.out.printf("타겟값 : %d\n", i);
             // System.out.println(binary_search(i)); 
-            int result = binary_search(i);
+            long result = binary_search(i);
             min = Math.min(min, result);
             max = Math.max(max, result);
         }
@@ -33,8 +33,8 @@ public class Main {
     }
 
 
-    static int binary_search(long target){
-        int cnt = 0;
+    static Long binary_search(long target){
+        long cnt = 0;
 
         long left = 1; 
         long right = M; 
