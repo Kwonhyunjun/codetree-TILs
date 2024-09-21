@@ -8,7 +8,7 @@ public class Main {
         long N = Long.parseLong(br.readLine());
 
         long left = 1L; 
-        long right = N; 
+        long right = 2000000000; 
         long maxNum = 1L; 
 
 
