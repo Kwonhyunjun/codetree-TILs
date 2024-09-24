@@ -40,6 +40,7 @@ public class Main {
 
         }
 
+        answer = (answer == Integer.MIN_VALUE) ? 0 : answer ;
         System.out.println(answer); 
         
     }
