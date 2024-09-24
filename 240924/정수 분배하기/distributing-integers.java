@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 
-    static int N, M, arr[], min;
+    static int N, M, arr[], max;
 
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
@@ -13,23 +13,24 @@ public class Main {
         M = Integer.parseInt(st.nextToken());
 
         arr = new int[N]; 
-        min = Integer.MAX_VALUE; 
+        max = Integer.MIN_VALUE; 
 
         for(int i=0; i<N; i++){
             int num = Integer.parseInt(br.readLine());
 
-            min = Math.min(min, num); 
+            max = Math.max(max, num); 
             arr[i] = num;
         }
 
         int left = 1;
-        int right = min; 
+        int right = max; 
         int answer = Integer.MIN_VALUE; 
+
+        // System.out.printf("%d %d\n", left, right);
 
         while(left <= right){
             
             int mid = (left + right) / 2; 
-            // System.out.println(mid); 
 
             if(isPossible(mid)){ // 더 키워도 됨
                 answer = Math.max(answer, mid); 
@@ -52,6 +53,8 @@ public class Main {
             res += (n / divide); 
         }
 
-        return res >= 11; 
+        // System.out.printf("%d -> %d\n", divide, res); 
+
+        return res >= M; 
     }
 }
