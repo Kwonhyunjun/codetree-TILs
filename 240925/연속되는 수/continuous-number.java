@@ -48,6 +48,7 @@ public class Main {
             }
 
             // System.out.println(key + " " + Arrays.toString(check));
+            // System.out.println(key); 
 
             int cur = count(); 
             
@@ -67,8 +68,8 @@ public class Main {
         int cnt = 0; 
 
         for(int i=0; i<N; i++){
-            
             if(!check[i]) continue;
+
 
             if(prev == arr[i]){
                 cnt++; 
@@ -77,7 +78,13 @@ public class Main {
                 prev = arr[i];
                 cnt = 1; 
             }
+
+            // if(i > 90)
+            //     System.out.println(i + " " + prev + " " + cnt); 
+
         }
+
+        res = Math.max(res, cnt); // 중요!
 
         // System.out.println(prev + " " + res); 
         
