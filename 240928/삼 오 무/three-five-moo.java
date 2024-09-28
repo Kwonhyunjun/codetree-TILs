@@ -10,7 +10,7 @@ public class Main {
         int left = 1;
         int right = 1_000_000_000;
 
-        int answer = 0; 
+        int answer = Integer.MAX_VALUE; 
 
         while(left <= right){
             
@@ -18,14 +18,15 @@ public class Main {
             
             int order = check(mid); 
 
-            if(order == N){
-                answer = mid; 
-                break; 
-            }
+            // if(order == N){
+            //     answer = mid; 
+            //     break; 
+            // }
 
-            if(order > N){
+            if(order >= N){
                 // 해당 숫자가 순번이 더 클경우
                 right = mid -1; 
+                answer = Math.min(answer, mid); 
                 
             }else{
                 left = mid + 1; 
