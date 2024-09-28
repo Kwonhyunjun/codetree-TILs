@@ -8,7 +8,7 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
 
         int left = 1;
-        int right = 1_000_000_000;
+        int right = Integer.MAX_VALUE;
 
         int answer = Integer.MAX_VALUE; 
 
