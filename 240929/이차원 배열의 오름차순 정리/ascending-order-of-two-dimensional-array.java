@@ -12,7 +12,7 @@ public class Main {
 
         long left = 1; 
         long right = (long) N * N; 
-        long answer = Long.MAX_VALUE;
+        long answer = right; 
 
         while(left <= right){
             // System.out.printf("%d ~ %d\n", left, right); 
@@ -20,7 +20,7 @@ public class Main {
 
             if(check(mid) >= K){
                 right = mid - 1; 
-                answer = Math.min(answer, mid); 
+                answer = mid; 
             }else{
                 left = mid + 1;
             }
@@ -31,15 +31,12 @@ public class Main {
         
     }
 
-    static int check(long mid){
-        int res = 0;
+    static long check(long mid){
+        long res = 0;
 
         for(int i = 1; i <= N; i++){
-            int cnt = (int) (mid / i); // cnt 계산
+            long cnt = (int) (mid / i); // cnt 계산
 
-            // if(cnt == 0) continue;
-
-            // cnt가 N을 초과하더라도 그 값으로 res를 증가시킴
             res += Math.min(cnt, N); 
         }
 
