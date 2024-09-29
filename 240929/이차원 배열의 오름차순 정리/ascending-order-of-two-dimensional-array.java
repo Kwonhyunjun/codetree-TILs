@@ -10,13 +10,13 @@ public class Main {
         N = Integer.parseInt(br.readLine()); 
         K = Integer.parseInt(br.readLine());
 
-        int left = 1; 
-        int right = N * N; 
-        int answer = Integer.MAX_VALUE; 
+        long left = 1; 
+        long right = (long) N * N; 
+        long answer = Long.MAX_VALUE;
 
         while(left <= right){
             // System.out.printf("%d ~ %d\n", left, right); 
-            int mid = left + (right - left) / 2; 
+            long mid = left + (right - left) / 2; 
 
             if(check(mid) >= K){
                 right = mid - 1; 
@@ -31,18 +31,16 @@ public class Main {
         
     }
 
-    static int check(int mid){
+    static int check(long mid){
         int res = 0;
 
-        for(int i=1; i<=N; i++){
+        for(int i = 1; i <= N; i++){
+            int cnt = (int) (mid / i); // cnt 계산
 
-            int cnt = mid / i; 
+            // if(cnt == 0) continue;
 
-            if(cnt == 0) continue;
-            // System.out.println(cnt); 
-
-            res += (cnt > N) ? N : cnt;            
-
+            // cnt가 N을 초과하더라도 그 값으로 res를 증가시킴
+            res += Math.min(cnt, N); 
         }
 
         // System.out.printf("mid(%d) => %d\n", mid, res); 
