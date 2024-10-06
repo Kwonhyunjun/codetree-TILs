@@ -11,7 +11,7 @@ public class Main {
 
         M = Long.parseLong(st.nextToken());
         N = Long.parseLong(st.nextToken());
-        answer = Integer.MAX_VALUE;
+        answer = Long.MAX_VALUE;
 
         times = new long[(int) N]; 
         for(int i=0; i<N; i++){
