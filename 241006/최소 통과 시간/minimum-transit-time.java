@@ -21,7 +21,7 @@ public class Main {
         Arrays.sort(times); 
         
         int left = 1; 
-        int right = 1000000000; 
+        int right = Integer.MAX_VALUE; 
 
         while(left <= right){
             int mid = left + (right - left) / 2;
