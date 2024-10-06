@@ -3,28 +3,28 @@ import java.util.*;
 
 public class Main {
 
-    static int N, M, times[], answer; 
+    static long N, M, times[], answer; 
 
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        M = Integer.parseInt(st.nextToken());
-        N = Integer.parseInt(st.nextToken());
+        M = Long.parseLong(st.nextToken());
+        N = Long.parseLong(st.nextToken());
         answer = Integer.MAX_VALUE;
 
-        times = new int[N]; 
+        times = new long[(int) N]; 
         for(int i=0; i<N; i++){
-            times[i] = Integer.parseInt(br.readLine()); 
+            times[i] = Long.parseLong(br.readLine()); 
         }
 
         Arrays.sort(times); 
         
-        int left = 1; 
-        int right = Integer.MAX_VALUE; 
+        long left = 1; 
+        long right = times[(int) N-1] * M ;
 
         while(left <= right){
-            int mid = left + (right - left) / 2;
+            long mid = left + (right - left) / 2;
 
             // System.out.printf("%d~%d => %d\n", left, right, mid); 
 
@@ -40,8 +40,8 @@ public class Main {
         System.out.println(answer); 
     }
 
-    static boolean isPossible(int mid){
-        int cnt = 0; 
+    static boolean isPossible(long mid){
+        long cnt = 0; 
 
         for(int i=0; i<N; i++){
             cnt += (mid / times[i]); 
