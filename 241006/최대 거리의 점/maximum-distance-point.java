@@ -19,7 +19,7 @@ public class Main {
 
         Arrays.sort(points); 
 
-        int left = points[0]; 
+        int left = 1; 
         int right = points[N-1]; 
         int answer = Integer.MIN_VALUE;
 
