@@ -7,12 +7,21 @@ public class Main {
     static Data[] lines; 
     static HashSet<Long> set; 
 
-    static class Data{
+    static class Data implements Comparable<Data>{
         long start, end; 
 
         public Data(long start, long end){
             this.start = start; 
             this.end = end; 
+        }
+
+        @Override
+        public int compareTo(Data o1){
+            if(this.start > o1.start) return 1; 
+            if(this.start < o1.start) return -1; 
+
+            if(end > o1.end) return 1; 
+            return -1; 
         }
     }
     
@@ -37,62 +46,25 @@ public class Main {
             }
         }
 
+        Arrays.sort(lines, 0, M); 
         long answer = Long.MIN_VALUE; 
 
         long left = 1L; 
         long right = lines[M-1].end; 
 
         while(left <= right){
-            long mid = left + (right - left) / 2; 
-            // System.out.printf("%d %d -> %d\n", left, right, mid);
+            long mid = left + (right - left) / 2;
 
             if(isPossible(mid)){
-                // System.out.println("통과");
                 left = mid + 1; 
                 answer = Math.max(answer, mid); 
             }else{
-                // System.out.println("통과X");
                 right = mid - 1; 
             }
         }
 
         System.out.println(answer); 
     }
-
-    // static boolean isPossible(long mid){
-    //     long cnt = 1; 
-    //     long prev = lines[0].start; 
-
-    //     for(int i=0; i<M; i++){
-    //         long next = prev + mid; 
-    //         // System.out.printf("i(%d) cnt(%d), prev(%d)+mid(%d) => %d \n", i, cnt, prev, mid, next); 
-
-    //         if(next <= lines[i].start){
-    //             // System.out.println("!!");
-    //             prev = lines[i].start;
-    //             cnt++; 
-    //         }
-            
-    //         if(isBetween(lines[i], next)){
-    //             // System.out.println("포함");
-    //             while(true){
-    //                 if(prev + mid > lines[i].end) break; 
-    //                 prev += mid;
-    //                 cnt++;  
-    //             }
-    //         }
-            
-    //     }
-
-    //     // System.out.printf("cnt : %d\n", cnt); 
-
-    //     return cnt >= N; 
-    // }
-
-
-    // static boolean isBetween(Data line, long num){
-    //     return num >= line.start && num <= line.end; 
-    // }
 
     public static boolean isPossible(long dist){
         int cnt = 0; 
