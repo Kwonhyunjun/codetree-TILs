@@ -5,7 +5,6 @@ public class Main {
 
     static int N, M; 
     static Data[] lines; 
-    static HashSet<Long> set; 
 
     static class Data implements Comparable<Data>{
         long start, end; 
@@ -33,17 +32,12 @@ public class Main {
         M = Integer.parseInt(st.nextToken()); // 선분 개수
 
         lines = new Data[M]; 
-        set = new HashSet<>(); 
 
         for(int i=0; i<M; i++){
             st = new StringTokenizer(br.readLine()); 
             long start = Long.parseLong(st.nextToken());
             long end = Long.parseLong(st.nextToken());
             lines[i] = new Data(start, end);
-            
-            for(long j=start; j<=end; j++){
-                set.add(j);
-            }
         }
 
         Arrays.sort(lines, 0, M); 
