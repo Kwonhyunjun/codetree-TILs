@@ -59,39 +59,60 @@ public class Main {
         System.out.println(answer); 
     }
 
-    static boolean isPossible(long mid){
-        long cnt = 1; 
-        long prev = lines[0].start; 
+    // static boolean isPossible(long mid){
+    //     long cnt = 1; 
+    //     long prev = lines[0].start; 
+
+    //     for(int i=0; i<M; i++){
+    //         long next = prev + mid; 
+    //         // System.out.printf("i(%d) cnt(%d), prev(%d)+mid(%d) => %d \n", i, cnt, prev, mid, next); 
+
+    //         if(next <= lines[i].start){
+    //             // System.out.println("!!");
+    //             prev = lines[i].start;
+    //             cnt++; 
+    //         }
+            
+    //         if(isBetween(lines[i], next)){
+    //             // System.out.println("포함");
+    //             while(true){
+    //                 if(prev + mid > lines[i].end) break; 
+    //                 prev += mid;
+    //                 cnt++;  
+    //             }
+    //         }
+            
+    //     }
+
+    //     // System.out.printf("cnt : %d\n", cnt); 
+
+    //     return cnt >= N; 
+    // }
+
+
+    // static boolean isBetween(Data line, long num){
+    //     return num >= line.start && num <= line.end; 
+    // }
+
+    public static boolean isPossible(long dist){
+        int cnt = 0; 
+        long lastX = (long) -1e18;
 
         for(int i=0; i<M; i++){
-            long next = prev + mid; 
-            // System.out.printf("i(%d) cnt(%d), prev(%d)+mid(%d) => %d \n", i, cnt, prev, mid, next); 
+            long a = lines[i].start; 
+            long b = lines[i].end; 
 
-            if(next <= lines[i].start){
-                // System.out.println("!!");
-                prev = lines[i].start;
+            while(lastX + dist <= b){
                 cnt++; 
+                lastX = Math.max(a, lastX + dist); 
             }
-            
-            if(isBetween(lines[i], next)){
-                // System.out.println("포함");
-                while(true){
-                    if(prev + mid > lines[i].end) break; 
-                    prev += mid;
-                    cnt++;  
-                }
+
+            if(cnt >= N){
+                break; 
             }
-            
         }
 
-        // System.out.printf("cnt : %d\n", cnt); 
-
         return cnt >= N; 
-    }
-
-
-    static boolean isBetween(Data line, long num){
-        return num >= line.start && num <= line.end; 
     }
 
 }
