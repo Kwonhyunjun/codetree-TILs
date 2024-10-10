@@ -46,12 +46,12 @@ public class Main {
 
     static boolean isPossible(int mid){
         Queue<int[]> pq; 
+        v = new boolean[N][N]; 
 
         // 시작 위치
         for(int sr = 0; sr<N; sr++){
             for(int sc = 0; sc<N; sc++){
                 int cnt = 0; 
-                v = new boolean[N][N]; 
 
                 pq = new ArrayDeque<>();
 
