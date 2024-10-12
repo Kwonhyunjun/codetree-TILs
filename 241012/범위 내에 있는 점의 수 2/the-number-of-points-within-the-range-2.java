@@ -41,7 +41,13 @@ public class Main {
             int start = Integer.parseInt(st.nextToken());
             int end = Integer.parseInt(st.nextToken()); 
 
-            sb.append(prefix[end]-prefix[start-1]).append("\n"); 
+            
+            if(start != 0){
+                sb.append(prefix[end]-prefix[start-1]).append("\n"); 
+            }else{
+                sb.append(prefix[end]-prefix[0]).append("\n"); 
+            }
+            
         }
 
         System.out.println(sb); 
