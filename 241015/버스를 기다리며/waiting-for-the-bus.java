@@ -19,7 +19,7 @@ public class Main {
             times[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(times); 
+        // Arrays.sort(times); 
 
         int left = 1; 
         int right = C; 
