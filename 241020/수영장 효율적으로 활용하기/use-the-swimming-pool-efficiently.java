@@ -28,10 +28,9 @@ public class Main {
         while(left <= right){
             int mid = left + (right - left) /2; 
 
-            int res = isPossible(mid);
-            if(res != -1){
+            if(isPossible(mid)){
                 right = mid - 1; 
-                answer = Math.min(answer, res); 
+                answer = Math.min(answer, mid); 
             }else{
                 left = mid + 1; 
             }
@@ -40,28 +39,22 @@ public class Main {
         System.out.println(answer);
     }
 
-    static int isPossible(int mid){
-        int idx = 0; 
-        int use_time = Integer.MIN_VALUE;
+    static boolean isPossible(int mid){
+        int idx = 0; // 사람번호 
+        int cnt = 1; // 레인수
 
-        // System.out.printf("mid: %d\n", mid); 
-        
-        for(int i=0; i<M; i++){
-            // 레인마다
-            int cur = 0; 
+        while(idx<N){
+            if(times[idx] > mid) return false;
+            if(cnt > M) return false;
 
-            while(idx < N && cur+times[idx] < mid){
-                cur += times[idx++]; 
+            int sum = 0;
+            while(idx<N && sum+times[idx] <= mid){
+                sum += times[idx];
+                idx++;
             }
-            // System.out.printf("%d번째 레인 : %d (%d번째 사람까지)\n", i, cur, idx-1);
-            use_time = Math.max(use_time, cur); 
-            if(idx >= N) break;
+            cnt++; 
         }
 
-        int res = (idx <= (N-1))? -1 : use_time; 
-
-        // System.out.printf("isPossiebl(%b), res(%d)\n", (res != -1), res);
-
-        return res; 
+        return true;
     }
 }
