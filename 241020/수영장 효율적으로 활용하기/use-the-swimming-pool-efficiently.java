@@ -50,7 +50,10 @@ public class Main {
             int cur = 0; 
             for(int j=0; j<mid; j++){
                 cur += times[idx++];
-                if(idx >= N) flag = true;  
+                if(idx >= N) {
+                    flag = true;  
+                    break;
+                }
             }
             use_time = Math.max(use_time, cur);
             if(flag) break; 
