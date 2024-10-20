@@ -12,24 +12,23 @@ public class Main {
         N = Integer.parseInt(st.nextToken()); // 사람 수
         M = Integer.parseInt(st.nextToken()); // 레인 수
 
-        int left = Integer.MAX_VALUE;;
-        int right = 0;  
-        int answer = Integer.MAX_VALUE;
-
         times = new int[N];
         st = new StringTokenizer(br.readLine());
         for(int i=0; i<N; i++){
             times[i] = Integer.parseInt(st.nextToken());
-            left = Math.min(left, times[i]);
-            right += times[i]; 
         }
 
+
+        int left = 1; 
+        int right = N;   
+        int answer = Integer.MAX_VALUE;
 
         while(left <= right){
             int mid = left + (right - left) /2; 
 
             int res = isPossible(mid);
             if(res != -1){
+                // 가능하면 레인당 수용인원을 줄이기
                 right = mid - 1; 
                 answer = Math.min(answer, res); 
             }else{
@@ -43,26 +42,20 @@ public class Main {
     static int isPossible(int mid){
         int idx = 0; 
         int use_time = Integer.MIN_VALUE;
+        boolean flag = false;
 
-        // System.out.printf("mid: %d\n", mid); 
-        
+        if(mid * M < N) return -1; 
+
         for(int i=0; i<M; i++){
-            // 레인마다
             int cur = 0; 
-
-            while(idx < N && cur+times[idx] < mid){
-                cur += times[idx++]; 
+            for(int j=0; j<mid; j++){
+                cur += times[idx++];
+                if(idx >= N) flag = true;  
             }
-            // System.out.printf("%d번째 레인 : %d (%d번째 사람까지)\n", i, cur, idx-1);
-            if(idx >= N) break;
-
-            use_time = Math.max(use_time, cur); 
+            use_time = Math.max(use_time, cur);
+            if(flag) break; 
         }
 
-        int res = (idx <= (N-1))? -1 : use_time; 
-
-        // System.out.printf("isPossiebl(%b), res(%d)\n", (res != -1), res);
-
-        return res; 
+        return use_time; 
     }
 }
