@@ -16,9 +16,13 @@ public class Main {
 
         int answer = 0; 
 
-        for(int i=0; i<N; i++){
-            for(int j=i+1; j<N; j++){
-                answer = Math.max(answer, arr[j]-arr[i]);        
+        int min = arr[0];
+
+        for(int i=1; i<N; i++){
+            if(min > arr[i]){
+                min = arr[i]; 
+            }else{
+                answer = Math.max(arr[i]-min, answer);
             }
         }
 
