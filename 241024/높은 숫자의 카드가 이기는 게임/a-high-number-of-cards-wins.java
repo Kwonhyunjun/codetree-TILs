@@ -23,10 +23,12 @@ public class Main {
             }
         }
 
+
         int answer = 0; 
 
         while(!pq1.isEmpty() && !pq2.isEmpty()){
             int cur = pq1.poll(); 
+            // System.out.println(cur);
 
             boolean flag = false; 
 
@@ -35,11 +37,15 @@ public class Main {
                     flag = true; 
                     break;
                 }else{
-                    pq2.poll(); 
+                    pq2.poll();
                 }
             }
+            
 
             if(flag) answer++; 
+            pq2.poll();
+            // answer++; 
+            // System.out.printf("answer : %d\n", answer, pq2.poll());
         }
 
         System.out.println(answer);
