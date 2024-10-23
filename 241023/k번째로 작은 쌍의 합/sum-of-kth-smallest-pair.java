@@ -49,10 +49,11 @@ public class Main {
 
             // System.out.println(cur.idx1 + " " + cur.idx2 + " " + cur.hap);
             
-            if(cur.idx2+1 >= M) continue;
-
-            pq.offer(new Data(cur.idx1, cur.idx2+1, arr1[cur.idx1]+arr2[cur.idx2+1])); 
             K--;     
+
+            if(cur.idx2+1 >= M) continue;
+            pq.offer(new Data(cur.idx1, cur.idx2+1, arr1[cur.idx1]+arr2[cur.idx2+1])); 
+            
         }
 
         System.out.println(cur.hap);
