@@ -7,17 +7,22 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
         int N = Integer.parseInt(br.readLine());
 
+        int answer = 0; 
         int cnt = 0; 
         int prev = -1;
 
         for(int i=0; i<N; i++){
             int num = Integer.parseInt(br.readLine());
             if(i == 0 || prev != num){
-                cnt++;
+                answer = Math.max(answer, cnt);
+                cnt = 0;
                 prev = num; 
             }
+            cnt++; 
         }
 
-        System.out.println(cnt);
+        answer = Math.max(answer, cnt);
+
+        System.out.println(answer);
     }
 }
