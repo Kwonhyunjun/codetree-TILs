@@ -16,13 +16,12 @@ public class Main {
             if(i==0 || (num < 0 && prev == -1) || (num > 0 && prev == 1)){
                 cnt++; 
             }else{
-
-                prev = (num < 0) ? -1 : 1; 
                 cnt = 1; 
             }
 
-
+            prev = (num < 0) ? -1 : 1; 
             answer = Math.max(answer, cnt); 
+            // System.out.printf("i(%d) => cnt(%d)\n", i, cnt); 
         }
 
         answer = Math.max(answer, cnt); 
