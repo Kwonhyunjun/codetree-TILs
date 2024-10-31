@@ -22,20 +22,23 @@ public class Main {
         }
 
         int answer = 0;
-        
+
         for(Map.Entry<Integer, int[]> entry : map.entrySet()){
             int key = entry.getKey();
             int[] value = entry.getValue(); 
 
-            if(value[0] == -1) continue; 
+            // if(value[0] == -1) continue; 
 
-            if(map.containsKey(K-key)){
+            if(key == (K-key)){
+                answer += (value[1]) * (value[1]-1);
+            }
+            else if(map.containsKey(K-key)){
                 answer += (map.get(K-key)[1] * value[1]);
                 map.get(K-key)[0] = -1;
                 value[0] = -1; 
             }
         }
         
-        System.out.println(answer); 
+        System.out.println(answer/2); 
     }
 }
