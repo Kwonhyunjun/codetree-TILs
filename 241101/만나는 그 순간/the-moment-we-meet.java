@@ -33,7 +33,7 @@ public class Main {
             }
         }
 
-        int answer = 0; 
+        int answer = -1; 
         int idx2 = 1000000; 
         int time2 = 1; 
         boolean flag = false; 
