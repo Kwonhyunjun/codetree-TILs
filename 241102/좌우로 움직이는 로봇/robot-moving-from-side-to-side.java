@@ -53,8 +53,8 @@ public class Main {
 
             int curA = (p < listA.size()) ? listA.get(p) : listA.get(listA.size()-1);
             int curB = (p < listB.size()) ? listB.get(p) : listB.get(listB.size()-1);
-            int prevA = (p < listA.size()) ? listA.get(p-1) : listA.get(listA.size()-2);
-            int prevB = (p < listB.size()) ? listB.get(p-1) : listB.get(listB.size()-2);
+            int prevA = (p < listA.size()) ? listA.get(p-1) : Integer.MAX_VALUE;
+            int prevB = (p < listB.size()) ? listB.get(p-1) : Integer.MAX_VALUE;
 
             if((curA == curB) && (prevA != prevB)) {
                 // System.out.println("meet : " + p);
