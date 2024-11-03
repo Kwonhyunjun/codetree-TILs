@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 
-    static int[] dr = {-1, 0, 1, 0};
+    static int[] dr = {1, 0, -1, 0};
     static int[] dc = {0, 1, 0, -1}; 
 
     public static void main(String[] args) throws Exception{
@@ -25,6 +25,8 @@ public class Main {
                 pos[0] += dr[dir];
                 pos[1] += dc[dir];
             }
+//            System.out.print(d + " " + n + " => ");
+//            System.out.println(pos[1] + " " + pos[0]); 
         }
 
         System.out.println(pos[1] + " " + pos[0]); 
