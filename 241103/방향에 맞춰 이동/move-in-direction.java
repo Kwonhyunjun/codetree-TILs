@@ -27,7 +27,7 @@ public class Main {
             }
         }
 
-        System.out.println(pos[0] + " " + pos[1]); 
+        System.out.println(pos[1] + " " + pos[0]); 
 
     }
 }
