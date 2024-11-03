@@ -21,7 +21,7 @@ public class Main {
             int n = Integer.parseInt(st.nextToken()) ;
             int dir = (d == 'N') ? 0 : (d == 'E') ? 1 : (d == 'S') ? 2 : 3; 
 
-            for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
                 pos[0] += dr[dir];
                 pos[1] += dc[dir];
             }
