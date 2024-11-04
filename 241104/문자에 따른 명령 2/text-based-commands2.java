@@ -5,7 +5,7 @@ public class Main {
 
     static int dir, pos[]; 
 
-    static int[] dr = {-1, 0, 1, 0};
+    static int[] dr = {1, 0, -1, 0};
     static int[] dc = {0, 1, 0, -1};
 
     public static void main(String[] args) throws Exception {
